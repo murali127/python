@@ -8,3 +8,5 @@ a=list(range(10,1,-1))
 print(a)
 for i in range(1,10):
     print(i)
+for i in "murali":
+    print(i)
