@@ -1,3 +1,4 @@
 range(10,11)
-list(range(1,11))
+a=list(range(1,11))
 print('hello')
+print(a)
