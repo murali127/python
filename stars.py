@@ -35,3 +35,12 @@ for i in range(1,n+1,1):
         for j in range(i,0,-1):
             print(j,end=" ")
         print( )
+n = int(input("Enter the number: "))
+for i in range(1, n + 1):
+    val = i
+    decrement = n - 1
+    for j in range(i):
+        print(val, end=" ")
+        val += decrement
+        decrement -= 1
+    print()
