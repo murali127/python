@@ -1,8 +1,11 @@
 class atm:
     def __init__(self):
+        ##data
         self.pin=""
         self.balance=0
+        print(id(self))
         self.menu()
+       ##methods 
     def menu(self):
         while(True):
             user_input=input("""
