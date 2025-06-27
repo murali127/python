@@ -1,12 +1,24 @@
 class atm:
     def __init__(self):
         ##data
-        self.pin=""
-        self.balance=0
+        #instance variables
+        self.__pin = ""
+        self.__balance = 0 
         print(id(self))
-        self.menu()
+        self.__menu()
+
+    #getter
+    def get_pin(self):
+        return self.__pin
+    #setter
+    def set_pin(self,new_pin):
+        if type(new_pin)==str:
+            self.__pin=new_pin 
+            print("pin changed")
+        else:
+            print("Not allowed")
        ##methods 
-    def menu(self):
+    def __menu(self):
         while(True):
             user_input=input("""
             Hello how would like to proceed?
@@ -14,7 +26,9 @@ class atm:
             2.Enter 2 to deposite 
             3.Enter 3 to withdraw
             4.Enter 4 to check balance
-            5. Enter 5 to exit
+            5.Enter 5 to get pin
+            6.Enter 6 to set pin
+            7.Enter 7 to exit
             """)
             if user_input=="1":
                 self.create_pin()
@@ -24,37 +38,42 @@ class atm:
                 self.withdraw()
             elif user_input=="4":
                 self.check_balance()
+            elif user_input=="5":
+                print("the pin is => ",self.get_pin())
+            elif user_input=="6":
+                new_pin=input("enter the new pin => ")
+                self.set_pin(new_pin)
             else:
                 print("bye")
                 break
     def create_pin(self):
-        self.pin=input("Enter your pin")
+        self.__pin = input("Enter your pin")
         print("Pin set Successfully ")
     def deposit(self):
-        temp=input("Enter your pin")
-        if temp==self.pin:
-            amount=int(input("Enter the amount"))
-            self.balance=self.balance+amount
+        temp = input("Enter your pin")
+        if temp == self.__pin:
+            amount = int(input("Enter the amount"))
+            self.__balance = self.__balance + amount
             print("Deposit successfull")
         else:
             print("Incorrect pin")
     def withdraw(self):
-         temp=input("Enter your pin")
-         if temp==self.pin:
-            amount=int(input("Enter the amount"))
-            if amount<self.balance:
-                self.balance-=amount 
+        temp = input("Enter your pin")
+        if temp == self.__pin:
+            amount = int(input("Enter the amount"))
+            if amount < self.__balance:
+                self.__balance -= amount 
                 print("Successful")
             else:
                 print("Insufficient balance")
-         else:
+        else:
             print("Invalid Pin")        
 
     def check_balance(self):
-        temp=input("Enter your pin")
-        if temp==self.pin:
-            print(self.balance)
+        temp = input("Enter your pin")
+        if temp == self.__pin:
+            print(self.__balance)
         else:
             print("Invalid Pin")
     
-sbi=atm()
+sbi = atm()
