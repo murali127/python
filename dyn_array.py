@@ -59,7 +59,13 @@ class ml:
             for i in range(pos,self.n-1):
                 self.a[i]=self.a[i+1]
             self.n=self.n-1
-     
+#11. Remove 
+    def remove(self,item):
+        pos=self.find(item)
+        if type(pos)==int:
+            self.__delitem__(pos)
+        else:
+            return pos
     def __resize(self,new_capacity):
         #create array with new capacity
         b=self.__make_array(new_capacity)
@@ -94,4 +100,5 @@ print(L)
 L.clear()
 print(L)
 L.insert(0,0)
+L.remove(0)
 print(L)
