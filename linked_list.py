@@ -55,7 +55,27 @@ class ll:
     def empty(self):
         self.head=None 
         self.n=0
-
+#7. Delete the first 
+    def del_first(self):
+        if self.head==None:
+            print('Empty')
+            return
+        self.head=self.head.next
+        self.n=self.n-1
+#8. Delete the last
+    def del_last(self):
+        if self.head==None:
+            print('Empty')
+            return
+        if self.head.next is None:
+            self.head = None
+            self.n -= 1
+            return
+        curr=self.head
+        while curr.next.next is not None:
+            curr=curr.next 
+        curr.next=None
+        self.n=self.n-1
 L=ll()
 while True:
     print(" ")
@@ -67,6 +87,8 @@ while True:
     print("4. Insert at Middle")
     print("5. Traverse the list")
     print("6. Empty")
+    print("7. First del")
+    print("8. Last del")
     print("10. Exit")
     choice=int(input("Enter your choice : "))
     if choice==1:
@@ -85,6 +107,12 @@ while True:
         L.traverse()
     elif choice==6:
         L.empty()
+    elif choice==7:
+        L.del_first()
+        L.traverse()
+    elif choice==8:
+        L.del_last()
+        L.traverse()
     elif choice==10:
         print("ok byee")
         break
