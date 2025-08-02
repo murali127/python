@@ -76,6 +76,35 @@ class ll:
             curr=curr.next 
         curr.next=None
         self.n=self.n-1
+#9. Delete from middle
+    def del_val(self,value):
+        curr=self.head
+        if self.head is None:
+            print("Empty List")
+            return 
+        if self.head.data==value:
+            self.head=self.head.next
+            self.n=self.n-1 
+            return 
+        while curr.next !=None:
+            if curr.next.data==value:
+                curr.next=curr.next.next
+                self.n=self.n-1
+                return
+            curr=curr.next
+        print("value not found")
+#10. Search the node 
+    def search(self, value):
+        curr = self.head
+        while curr is not None:
+            if curr.data == value:
+                if curr.next is not None:
+                    print(f"Value after {value} is {curr.next.data}")
+                else:
+                    print(f"{value} is the last node, no value after it")
+                return
+            curr = curr.next
+        print(f"{value} not found in the list")
 L=ll()
 while True:
     print(" ")
@@ -89,7 +118,9 @@ while True:
     print("6. Empty")
     print("7. First del")
     print("8. Last del")
-    print("10. Exit")
+    print("9. Del by value")
+    print("10. Search")
+    print("13. Exit")
     choice=int(input("Enter your choice : "))
     if choice==1:
         print("the len of the ll is ", len(L))
@@ -113,6 +144,13 @@ while True:
     elif choice==8:
         L.del_last()
         L.traverse()
+    elif choice==9:
+        a=int(input("Enter the vlaue to delete : "))
+        L.del_val(a)
+        L.traverse()
     elif choice==10:
+        a=int(input("Enter the value to search : "))
+        L.search(a)
+    elif choice==13:
         print("ok byee")
         break
