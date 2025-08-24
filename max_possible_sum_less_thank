@@ -1,0 +1,25 @@
+def subarray(arr,k):
+    n=len(arr)
+    s=[]
+    l=[]
+    msub=float('-inf')
+    for i in range(n):
+        for j in range(i,n):
+            a=arr[i:j+1]
+            s.append(a)
+    for i in s:
+        p=sum(i)
+        if p<k:
+            if p>msub:
+                msub=p
+                l=[i]
+            elif p==msub:
+                l.append(i)
+    return s,msub,l
+m=list(map(int,input("Enter the array: ").split()))
+k=int(input())
+s,k,l=subarray(m,k)
+print("the subarrays are ",s)
+print("the min sum is ",k)
+print("the sub array is",l)
+print(f"the count of the subarrays are {len(s)}")
